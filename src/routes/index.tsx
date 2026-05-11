@@ -4,8 +4,8 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Grace Tuition Center — A practice of careful teaching" },
-      { name: "description", content: "Chennai's editorial-minded tuition center. Master-led mentorship, board exam mastery and a slower, sharper way to learn." },
+      { title: "Grace Tuition Center — Empowering Minds. Shaping Futures." },
+      { name: "description", content: "Chennai's friendliest premium tuition center. Master mentors, board mastery and learning that students actually love." },
     ],
   }),
 });
@@ -13,55 +13,72 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div>
-      {/* MASTHEAD */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1400px] px-6 pb-10 pt-6">
-          <div className="flex items-center justify-between text-xs">
-            <span className="label">Vol. XII — Edition 04</span>
-            <span className="label">Chennai · Tamil Nadu</span>
-            <span className="label hidden sm:inline">Founded 2013</span>
-          </div>
-          <div className="rule mt-4 origin-left animate-draw" />
-          <div className="mt-10 grid items-end gap-8 md:grid-cols-12">
-            <h1 className="display-xl md:col-span-9">
-              Empowering minds.<br />
-              <span className="italic-serif text-accent">Shaping</span> futures —<br />
-              one student at a time.
-            </h1>
-            <div className="md:col-span-3">
-              <div className="label mb-3">Subtitle</div>
-              <p className="text-base leading-relaxed">
-                A tuition center practising the slower craft of mastery —
-                small batches, master mentors and quietly excellent results.
+      {/* HERO */}
+      <section className="relative px-4 pt-4">
+        <div className="mx-auto max-w-[1400px] rounded-[2rem] border-ink bg-cream p-6 shadow-block-lg md:p-12">
+          <div className="grid gap-10 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-8">
+              <span className="chip"><span className="h-2 w-2 rounded-full bg-clay" /> Admissions open · 2026</span>
+              <h1 className="display-xl mt-6">
+                Empowering<br />
+                minds, <span className="italic-serif text-clay">shaping</span><br />
+                futures.
+              </h1>
+              <p className="mt-6 max-w-md text-lg text-muted-foreground">
+                A tuition center where students stop dreading study — and start owning it.
+                Master mentors, small batches, big results.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/enroll" className="btn-ink rounded-full px-5 py-2.5 text-xs uppercase tracking-[0.16em]">Enroll Now</Link>
-                <Link to="/programs" className="btn-outline-ink rounded-full px-5 py-2.5 text-xs uppercase tracking-[0.16em]">Programs</Link>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link to="/enroll" className="btn-ink rounded-full px-6 py-3 text-xs uppercase tracking-[0.18em]">Enroll Now →</Link>
+                <Link to="/programs" className="btn-cream rounded-full px-6 py-3 text-xs uppercase tracking-[0.18em]">Explore Programs</Link>
               </div>
             </div>
+
+            {/* Sticker collage */}
+            <div className="relative md:col-span-4">
+              <div className="relative h-[22rem]">
+                <div className="absolute right-0 top-2 h-44 w-44 rounded-[40%] bg-clay shadow-block animate-blob" />
+                <div className="absolute left-2 top-24 h-24 w-24 rounded-full border-ink bg-sun shadow-block" style={{ animation: "spin 22s linear infinite" }}>
+                  <div className="grid h-full place-items-center font-display text-3xl">A+</div>
+                </div>
+                <div className="absolute right-6 bottom-4 rotate-[-6deg] rounded-2xl border-ink bg-cream px-4 py-3 shadow-block">
+                  <div className="label text-clay">Mastery</div>
+                  <div className="font-display text-3xl">98%</div>
+                </div>
+                <div className="absolute left-0 bottom-10 rotate-[4deg] rounded-2xl border-ink bg-sage px-4 py-3 shadow-block">
+                  <div className="label">Toppers</div>
+                  <div className="font-display text-3xl">120+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* footer strip */}
+          <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t-2 border-ink pt-6">
+            {[
+              { k: "12+ yrs", v: "in practice" },
+              { k: "1,200+", v: "students mentored" },
+              { k: "98%", v: "board pass rate" },
+              { k: "1:8", v: "mentor ratio" },
+            ].map((s) => (
+              <div key={s.v}>
+                <div className="font-display text-2xl">{s.k}</div>
+                <div className="label text-muted-foreground">{s.v}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* TICKER */}
-      <section className="overflow-hidden border-b border-border bg-paper-2/40 py-4">
-        <div className="flex animate-marquee whitespace-nowrap font-display text-3xl">
+      {/* MARQUEE */}
+      <section className="my-10 overflow-hidden border-y-2 border-ink bg-clay py-4 text-cream">
+        <div className="flex animate-marquee whitespace-nowrap font-display text-4xl">
           {Array.from({ length: 2 }).map((_, k) => (
             <div key={k} className="flex items-center gap-10 pr-10">
-              {[
-                "Mathematics",
-                "Physics",
-                "Chemistry",
-                "Biology",
-                "English",
-                "Social Science",
-                "Board Mastery",
-                "One-to-One",
-                "Revision",
-              ].map((t) => (
+              {["Mathematics", "Physics", "Chemistry", "Biology", "English", "Social Science", "Board Mastery", "1-on-1"].map((t) => (
                 <span key={t} className="flex items-center gap-10">
                   <span className="italic-serif">{t}</span>
-                  <span aria-hidden className="text-accent">✦</span>
+                  <span aria-hidden className="text-sun">✦</span>
                 </span>
               ))}
             </div>
@@ -69,140 +86,115 @@ function Home() {
         </div>
       </section>
 
-      {/* INTRO ESSAY + STATS */}
-      <section className="mx-auto max-w-[1400px] px-6 py-24">
-        <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-2">
-            <div className="label">§ 01</div>
-            <div className="mt-2 font-display text-2xl">Notes</div>
-          </div>
+      {/* WHY GRACE — color blocks */}
+      <section className="mx-auto max-w-[1400px] px-4 py-16 md:py-24">
+        <div className="mb-12 grid gap-6 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <p className="font-display text-3xl leading-snug md:text-4xl">
-              We don't believe in louder classrooms — we believe in <span className="italic-serif text-accent">deeper ones</span>.
-              At Grace, the work is unhurried, the attention is honest, and the standard is unmistakable.
-            </p>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Our students learn to think before they answer; to question before they memorise; to study with method, not panic.
-              The result is a quiet kind of confidence — the kind that performs, again and again, when it counts.
-            </p>
+            <div className="label text-clay">Why Grace</div>
+            <h2 className="display-lg mt-3">Built for how students <span className="italic-serif">actually</span> learn.</h2>
           </div>
-          <div className="md:col-span-3">
-            <div className="space-y-6 border-l border-ink pl-6">
-              {[
-                { k: "12+", v: "Years in practice" },
-                { k: "1,200", v: "Students mentored" },
-                { k: "98%", v: "Board pass rate" },
-                { k: "120+", v: "State & district toppers" },
-              ].map((s) => (
-                <div key={s.v}>
-                  <div className="font-display text-4xl leading-none">{s.k}</div>
-                  <div className="label mt-1.5">{s.v}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="text-muted-foreground md:col-span-5">
+            Six things we obsess over — so parents don't have to.
+          </p>
         </div>
-      </section>
 
-      {/* PILLARS */}
-      <section className="border-y border-border bg-paper-2/30">
-        <div className="mx-auto max-w-[1400px] px-6 py-24">
-          <div className="mb-12 flex items-end justify-between gap-6">
-            <div>
-              <div className="label">§ 02 — Method</div>
-              <h2 className="display-lg mt-3">A different way of teaching.</h2>
-            </div>
-            <Link to="/about" className="hidden text-sm text-foreground/70 ink-link sm:inline">Read the manifesto →</Link>
-          </div>
-
-          <div className="grid divide-y divide-border border-y border-border md:grid-cols-3 md:divide-x md:divide-y-0">
-            {[
-              { n: "I.", t: "Mastery, not memorisation", d: "We teach concepts deeply — applications, edge cases, exam craft." },
-              { n: "II.", t: "Mentorship over instruction", d: "Each student is known by name, by goals and by the topics they fear most." },
-              { n: "III.", t: "Honest measurement", d: "Weekly mastery checks. Parents informed. Students never blindsided." },
-              { n: "IV.", t: "Small batches", d: "Limited seats per class. Attention is a feature, not an afterthought." },
-              { n: "V.", t: "Board-grade rigor", d: "Mock papers and revision sprints structured to the board calendar." },
-              { n: "VI.", t: "Calm classrooms", d: "Quiet, focused rooms where good thinking is allowed time to happen." },
-            ].map((p) => (
-              <div key={p.n} className="p-8 transition-colors hover:bg-paper" data-cursor="hover">
-                <div className="flex items-baseline justify-between">
-                  <span className="font-display text-3xl text-accent">{p.n}</span>
-                  <span className="label">Pillar</span>
-                </div>
-                <h3 className="mt-6 font-display text-2xl">{p.t}</h3>
-                <p className="mt-3 text-sm text-muted-foreground">{p.d}</p>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            { n: "01", t: "AI-guided plans", d: "Personalized study plans that adapt to each student's pace and gaps.", bg: "bg-cream" },
+            { n: "02", t: "Mastery, not memo.", d: "Concept-first teaching with depth, application and exam craft.", bg: "bg-sun" },
+            { n: "03", t: "Visible growth", d: "Live dashboards so parents and students see progress weekly.", bg: "bg-cream" },
+            { n: "04", t: "Board mastery", d: "Targeted revision sprints, mock papers and 1:1 doubt-clearing.", bg: "bg-clay text-cream" },
+            { n: "05", t: "Small batches", d: "Limited seats per class — every student is seen, every session.", bg: "bg-cream" },
+            { n: "06", t: "Proven results", d: "Top scorers across CBSE, State Board and entrance prep year after year.", bg: "bg-sage" },
+          ].map((f) => (
+            <div key={f.n} className={`card-block p-7 ${f.bg}`} data-cursor="hover">
+              <div className="flex items-baseline justify-between">
+                <span className="font-display text-5xl">{f.n}</span>
+                <span className="label">Pillar</span>
               </div>
-            ))}
-          </div>
+              <div className="mt-8 font-display text-2xl">{f.t}</div>
+              <p className={`mt-2 text-sm ${f.bg.includes("clay") ? "text-cream/80" : "text-muted-foreground"}`}>{f.d}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* PROGRAMS INDEX */}
-      <section className="mx-auto max-w-[1400px] px-6 py-24">
-        <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <div className="label">§ 03 — Index</div>
-            <h2 className="display-lg mt-3">Programs.</h2>
-            <p className="mt-4 max-w-xs text-sm text-muted-foreground">From the foundational years to higher secondary — a continuous curriculum.</p>
+      {/* PROGRAMS */}
+      <section className="mx-auto max-w-[1400px] px-4 py-16 md:py-24">
+        <div className="rounded-[2rem] border-ink bg-cream p-6 shadow-block md:p-12">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <div className="label text-clay">Programs</div>
+              <h2 className="display-lg mt-3">From Primary to Higher Secondary.</h2>
+            </div>
+            <Link to="/programs" className="ink-link text-sm">View all →</Link>
           </div>
-          <div className="md:col-span-8">
-            <div className="rule" />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { n: "01", t: "Primary", d: "Grades 1–5 · foundations & curiosity" },
-              { n: "02", t: "Middle School", d: "Grades 6–8 · habits of thinking" },
-              { n: "03", t: "High School", d: "Grades 9–10 · board mastery" },
-              { n: "04", t: "Higher Secondary", d: "Grades 11–12 · exam excellence" },
-            ].map((row) => (
+              { n: "01", t: "Primary", d: "Grades 1–5", bg: "bg-sage" },
+              { n: "02", t: "Middle", d: "Grades 6–8", bg: "bg-sun" },
+              { n: "03", t: "High", d: "Grades 9–10", bg: "bg-cream" },
+              { n: "04", t: "Higher Sec.", d: "Grades 11–12", bg: "bg-clay text-cream" },
+            ].map((p) => (
               <Link
-                key={row.n}
+                key={p.n}
                 to="/programs"
                 data-cursor="hover"
-                className="group grid grid-cols-[60px_1fr_auto] items-center gap-6 border-b border-border py-7 transition-colors hover:bg-paper-2/40"
+                className={`card-block p-6 ${p.bg}`}
               >
-                <span className="number-marker">{row.n}</span>
-                <div>
-                  <div className="font-display text-3xl group-hover:text-accent">{row.t}</div>
-                  <div className="mt-1 text-sm text-muted-foreground">{row.d}</div>
+                <div className="flex items-baseline justify-between">
+                  <span className="label">{p.n}</span>
+                  <span className="font-display text-xl">→</span>
                 </div>
-                <span className="font-display text-2xl text-foreground/60 transition-transform group-hover:translate-x-1 group-hover:text-accent">→</span>
+                <div className="mt-12 font-display text-3xl">{p.t}</div>
+                <div className={`mt-1 text-sm ${p.bg.includes("clay") ? "text-cream/80" : "text-muted-foreground"}`}>{p.d}</div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* DASHBOARD AS LEDGER */}
-      <section className="border-y border-border bg-paper-2/30">
-        <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
+      {/* DASHBOARD */}
+      <section className="mx-auto max-w-[1400px] px-4 py-16 md:py-24">
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div>
-            <div className="label">§ 04 — Ledger</div>
-            <h2 className="display-lg mt-3">Progress, written down.</h2>
+            <div className="label text-clay">Student Ledger</div>
+            <h2 className="display-lg mt-3">Progress, <span className="italic-serif">written down</span>.</h2>
             <p className="mt-4 max-w-md text-muted-foreground">
-              Every student has a private ledger — weekly mastery, weak topics, plan ahead.
-              <span className="italic-serif"> No surprises, only direction.</span>
+              Each student has their own ledger — weekly mastery, weak topics, study plan and goals.
+              No surprises, only direction.
             </p>
+            <Link to="/about" className="mt-6 inline-block text-sm ink-link">How we teach →</Link>
           </div>
-          <div className="paper-card rounded-xl p-8">
-            <div className="flex items-end justify-between border-b border-border pb-4">
+          <div className="card-block p-8">
+            <div className="flex items-end justify-between border-b-2 border-ink pb-4">
               <div>
                 <div className="label">Weekly mastery</div>
-                <div className="font-display text-5xl leading-none">92<span className="text-2xl text-muted-foreground">%</span></div>
+                <div className="font-display text-6xl leading-none">92<span className="text-3xl text-muted-foreground">%</span></div>
               </div>
-              <div className="font-mono text-xs text-accent">▲ 6.2</div>
+              <span className="chip bg-sun">▲ 6.2%</span>
             </div>
             <div className="mt-6 flex h-36 items-end gap-2">
               {[40, 55, 48, 70, 62, 85, 92].map((h, i) => (
-                <div key={i} className="flex-1 bg-ink/85" style={{ height: `${h}%` }} />
+                <div
+                  key={i}
+                  className="flex-1 rounded-t-md border-2 border-ink"
+                  style={{ height: `${h}%`, background: i === 6 ? "var(--clay)" : "var(--sun)" }}
+                />
               ))}
             </div>
             <div className="mt-3 flex justify-between font-mono text-[10px] text-muted-foreground">
               {["W1","W2","W3","W4","W5","W6","W7"].map((w) => <span key={w}>{w}</span>)}
             </div>
-            <div className="mt-6 grid grid-cols-3 divide-x divide-border border-t border-border pt-4 text-center">
-              {[{ k: "Math", v: "A+" }, { k: "Science", v: "A" }, { k: "English", v: "A" }].map((s) => (
-                <div key={s.k}>
+            <div className="mt-6 grid grid-cols-3 gap-3">
+              {[
+                { k: "Math", v: "A+", bg: "bg-clay text-cream" },
+                { k: "Science", v: "A", bg: "bg-sage" },
+                { k: "English", v: "A", bg: "bg-sun" },
+              ].map((s) => (
+                <div key={s.k} className={`rounded-xl border-ink-1 p-3 text-center ${s.bg}`}>
                   <div className="label">{s.k}</div>
-                  <div className="mt-1 font-display text-2xl">{s.v}</div>
+                  <div className="font-display text-2xl">{s.v}</div>
                 </div>
               ))}
             </div>
@@ -210,21 +202,44 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA — editorial column */}
-      <section className="mx-auto max-w-[1400px] px-6 py-32">
-        <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-2 md:pt-2">
-            <div className="label">§ 05</div>
-            <div className="mt-2 font-display text-2xl">Begin</div>
+      {/* TESTIMONIAL */}
+      <section className="mx-auto max-w-[1400px] px-4 py-16 md:py-24">
+        <div className="rounded-[2rem] border-ink bg-sun p-10 shadow-block md:p-16">
+          <div className="grid gap-10 md:grid-cols-12 md:items-center">
+            <div className="md:col-span-2">
+              <div className="font-display text-8xl leading-none text-clay">"</div>
+            </div>
+            <div className="md:col-span-7">
+              <p className="font-display text-3xl leading-tight md:text-4xl">
+                My daughter went from dreading exams to <span className="italic-serif text-clay">looking forward</span> to her study sessions. Grace changed her relationship with learning.
+              </p>
+              <div className="mt-6 label">— Lakshmi P., parent · Class 10</div>
+            </div>
+            <div className="md:col-span-3">
+              <div className="card-block bg-cream p-5">
+                <div className="label text-clay">Parent rating</div>
+                <div className="font-display text-5xl">4.9<span className="text-2xl text-muted-foreground">/5</span></div>
+                <div className="label mt-2">Based on 312 reviews</div>
+              </div>
+            </div>
           </div>
-          <div className="md:col-span-10">
-            <p className="display-lg">
-              A free counseling session — meet the mentors,
-              <span className="italic-serif text-accent"> design a plan,</span> begin the year on purpose.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link to="/enroll" className="btn-ink rounded-full px-6 py-3 text-xs uppercase tracking-[0.18em]">Request counseling</Link>
-              <Link to="/contact" className="btn-outline-ink rounded-full px-6 py-3 text-xs uppercase tracking-[0.18em]">Contact</Link>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="mx-auto max-w-[1400px] px-4 py-16 md:py-24">
+        <div className="rounded-[2rem] border-ink bg-clay p-10 text-cream shadow-block-lg md:p-16">
+          <div className="grid gap-10 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-8">
+              <div className="label text-sun">Begin</div>
+              <h2 className="display-lg mt-3">Book a free counseling session.</h2>
+              <p className="mt-4 max-w-lg text-cream/85">
+                Meet a senior mentor, design a personalized plan for your child, decide if Grace is right for them. No pressure, ever.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 md:col-span-4 md:justify-end">
+              <Link to="/enroll" className="btn-cream rounded-full px-6 py-3 text-xs uppercase tracking-[0.18em]">Free Counseling →</Link>
+              <Link to="/contact" className="rounded-full border-2 border-cream px-6 py-3 text-xs uppercase tracking-[0.18em] hover:bg-cream hover:text-ink transition-colors">Contact</Link>
             </div>
           </div>
         </div>
