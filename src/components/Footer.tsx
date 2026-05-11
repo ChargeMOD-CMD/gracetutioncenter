@@ -1,44 +1,40 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-border/60">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-4">
-        <div>
-          <div className="font-display text-lg font-semibold">GRACE Tuition Center</div>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Empowering Minds. Shaping Futures. A next-generation learning experience built around the student.
-          </p>
+    <footer className="mt-32 border-t border-border">
+      <div className="mx-auto max-w-[1400px] px-6 py-16">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <div className="font-display text-5xl leading-none">Grace.</div>
+            <p className="mt-5 max-w-sm text-sm text-muted-foreground">
+              An institution of careful teaching. <span className="italic-serif">Slow when it must be, sharp when it counts.</span>
+            </p>
+          </div>
+          <div className="md:col-span-3">
+            <div className="label mb-4">Navigate</div>
+            <ul className="space-y-2 text-sm">
+              <li><Link to="/about" className="ink-link">Manifesto</Link></li>
+              <li><Link to="/programs" className="ink-link">Programs</Link></li>
+              <li><Link to="/faculty" className="ink-link">Faculty</Link></li>
+              <li><Link to="/achievements" className="ink-link">Records</Link></li>
+            </ul>
+          </div>
+          <div className="md:col-span-4">
+            <div className="label mb-4">Reach</div>
+            <ul className="space-y-1.5 text-sm">
+              <li>+91 63749 93259</li>
+              <li>info@gracetuitioncenter.com</li>
+              <li>Chennai, Tamil Nadu</li>
+              <li className="pt-3 text-muted-foreground">Mon–Fri · 16:00–21:00</li>
+              <li className="text-muted-foreground">Sat–Sun · 09:00–18:00</li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <div className="mb-3 text-sm font-semibold">Explore</div>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><Link to="/about" className="hover:text-foreground">About</Link></li>
-            <li><Link to="/programs" className="hover:text-foreground">Programs</Link></li>
-            <li><Link to="/faculty" className="hover:text-foreground">Faculty</Link></li>
-            <li><Link to="/achievements" className="hover:text-foreground">Achievements</Link></li>
-          </ul>
+        <div className="mt-12 flex items-center justify-between border-t border-border pt-6 text-xs text-muted-foreground">
+          <span>© {new Date().getFullYear()} Grace Tuition Center</span>
+          <span className="font-mono">Vol. XII · Chennai Edition</span>
         </div>
-        <div>
-          <div className="mb-3 text-sm font-semibold">Contact</div>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-highlight" /> +91 63749 93259</li>
-            <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-highlight" /> WhatsApp 63749 93259</li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-highlight" /> info@gracetuitioncenter.com</li>
-            <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-highlight" /> Chennai, Tamil Nadu</li>
-          </ul>
-        </div>
-        <div>
-          <div className="mb-3 text-sm font-semibold">Hours</div>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>Weekdays · 4:00 PM – 9:00 PM</li>
-            <li>Weekends · 9:00 AM – 6:00 PM</li>
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-border/60 py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} GRACE Tuition Center · Crafted for academic excellence
       </div>
     </footer>
   );
