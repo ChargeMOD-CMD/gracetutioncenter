@@ -1,12 +1,12 @@
 import { useEffect, useRef } from "react";
 
 export function CustomCursor() {
-  const ring = useRef<HTMLDivElement>(null);
+  const blob = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let x = window.innerWidth / 2, y = window.innerHeight / 2;
-    let rx = x, ry = y;
+    let bx = x, by = y;
     let raf = 0;
 
     const move = (e: MouseEvent) => {
@@ -14,15 +14,15 @@ export function CustomCursor() {
       if (dot.current) dot.current.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%)`;
     };
     const tick = () => {
-      rx += (x - rx) * 0.2;
-      ry += (y - ry) * 0.2;
-      if (ring.current) ring.current.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+      bx += (x - bx) * 0.18;
+      by += (y - by) * 0.18;
+      if (blob.current) blob.current.style.transform = `translate(${bx}px, ${by}px) translate(-50%,-50%)`;
       raf = requestAnimationFrame(tick);
     };
     const over = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
-      if (t.closest("a, button, [data-cursor='hover']")) ring.current?.classList.add("is-hover");
-      else ring.current?.classList.remove("is-hover");
+      if (t.closest("a, button, [data-cursor='hover']")) blob.current?.classList.add("is-hover");
+      else blob.current?.classList.remove("is-hover");
     };
 
     window.addEventListener("mousemove", move);
@@ -37,7 +37,7 @@ export function CustomCursor() {
 
   return (
     <>
-      <div ref={ring} className="cursor-ring" />
+      <div ref={blob} className="cursor-blob" />
       <div ref={dot} className="cursor-dot" />
     </>
   );
