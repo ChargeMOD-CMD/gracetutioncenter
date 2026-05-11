@@ -9,6 +9,10 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { CustomCursor } from "@/components/CustomCursor";
+import { AIMentor } from "@/components/AIMentor";
 
 function NotFoundComponent() {
   return (
@@ -72,19 +76,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "GRACE Tuition Center — Empowering Minds. Shaping Futures." },
+      { name: "description", content: "Premium tuition coaching in Chennai for school & higher secondary. Personalized mentorship, board exam prep, and AI-guided learning." },
+      { name: "author", content: "GRACE Tuition Center" },
+      { property: "og:title", content: "GRACE Tuition Center — Empowering Minds. Shaping Futures." },
+      { property: "og:description", content: "A next-generation learning experience: AI mentorship, mastery-based programs, and student-first coaching." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap",
       },
     ],
   }),
@@ -113,7 +119,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <CustomCursor />
+      <Header />
+      <main className="pt-24">
+        <Outlet />
+      </main>
+      <Footer />
+      <AIMentor />
     </QueryClientProvider>
   );
 }
