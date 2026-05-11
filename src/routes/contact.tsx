@@ -1,63 +1,70 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
   head: () => ({
     meta: [
-      { title: "Contact — GRACE Tuition Center" },
-      { name: "description", content: "Reach GRACE Tuition Center in Chennai. Phone, WhatsApp, email and location." },
+      { title: "Contact — Grace Tuition Center" },
+      { name: "description", content: "Reach Grace Tuition Center in Chennai. Phone, WhatsApp, email and location." },
     ],
   }),
 });
 
+const channels = [
+  { t: "Telephone", v: "+91 63749 93259", href: "tel:+916374993259" },
+  { t: "WhatsApp", v: "Message us", href: "https://wa.me/916374993259" },
+  { t: "Correspondence", v: "info@gracetuitioncenter.com", href: "mailto:info@gracetuitioncenter.com" },
+  { t: "In person", v: "Chennai, Tamil Nadu", href: "#map" },
+];
+
 function Contact() {
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
-      <div className="max-w-3xl">
-        <div className="text-xs uppercase tracking-[0.2em] text-highlight">Contact</div>
-        <h1 className="mt-3 font-display text-5xl font-semibold">Let's <span className="text-gradient">talk learning</span>.</h1>
-        <p className="mt-4 text-muted-foreground">We're here on weekdays evenings and all day on weekends.</p>
-      </div>
+    <div>
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-[1400px] px-6 pb-12 pt-10">
+          <div className="label">§ 07 — Contact</div>
+          <h1 className="display-xl mt-6">Let us <span className="italic-serif text-accent">talk</span> learning.</h1>
+        </div>
+      </section>
 
-      <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {[
-          { icon: Phone, t: "Call", v: "+91 63749 93259", href: "tel:+916374993259" },
-          { icon: MessageCircle, t: "WhatsApp", v: "Chat with us", href: "https://wa.me/916374993259" },
-          { icon: Mail, t: "Email", v: "info@gracetuitioncenter.com", href: "mailto:info@gracetuitioncenter.com" },
-          { icon: MapPin, t: "Visit", v: "Chennai, Tamil Nadu", href: "#map" },
-        ].map((c) => (
+      <section className="mx-auto max-w-[1400px] px-6 py-20">
+        <div className="rule" />
+        {channels.map((c, i) => (
           <a
             key={c.t}
             href={c.href}
-            className="card-tilt glass rounded-2xl p-6"
             data-cursor="hover"
+            className="group grid grid-cols-[60px_1fr_auto] items-baseline gap-6 border-b border-border py-8 transition-colors hover:bg-paper-2/40"
           >
-            <c.icon className="h-6 w-6 text-highlight" />
-            <div className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">{c.t}</div>
-            <div className="mt-1 font-display text-lg">{c.v}</div>
+            <span className="number-marker">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <div className="label">{c.t}</div>
+              <div className="mt-2 font-display text-3xl group-hover:text-accent md:text-4xl">{c.v}</div>
+            </div>
+            <span className="font-display text-3xl text-foreground/60 transition-transform group-hover:translate-x-1 group-hover:text-accent">→</span>
           </a>
         ))}
-      </div>
+      </section>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-[1fr_2fr]">
-        <div className="glass rounded-2xl p-6">
-          <Clock className="h-6 w-6 text-highlight" />
-          <div className="mt-4 font-display text-lg font-semibold">Business Hours</div>
-          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li>Mon – Fri · 4:00 PM – 9:00 PM</li>
-            <li>Sat – Sun · 9:00 AM – 6:00 PM</li>
-          </ul>
+      <section className="mx-auto max-w-[1400px] px-6 py-20">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <div className="label">Hours</div>
+            <ul className="mt-4 space-y-2 font-display text-2xl">
+              <li>Mon–Fri · <span className="italic-serif">16:00 – 21:00</span></li>
+              <li>Sat–Sun · <span className="italic-serif">09:00 – 18:00</span></li>
+            </ul>
+          </div>
+          <div id="map" className="paper-card overflow-hidden rounded-xl md:col-span-8">
+            <iframe
+              title="Grace Tuition Center location"
+              src="https://www.google.com/maps?q=Chennai,Tamil+Nadu&output=embed"
+              className="h-80 w-full border-0"
+              loading="lazy"
+            />
+          </div>
         </div>
-        <div id="map" className="glass overflow-hidden rounded-2xl">
-          <iframe
-            title="GRACE Tuition Center location"
-            src="https://www.google.com/maps?q=Chennai,Tamil+Nadu&output=embed"
-            className="h-72 w-full border-0"
-            loading="lazy"
-          />
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

@@ -1,52 +1,57 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { GraduationCap } from "lucide-react";
 
 export const Route = createFileRoute("/faculty")({
   component: Faculty,
   head: () => ({
     meta: [
-      { title: "Faculty & Mentors — GRACE Tuition Center" },
-      { name: "description", content: "Meet the experienced mentors guiding GRACE students." },
+      { title: "Faculty — Grace Tuition Center" },
+      { name: "description", content: "Senior mentors who teach with depth, patience and a long view." },
     ],
   }),
 });
 
 const team = [
-  { n: "Mrs. Anitha R.", r: "Lead Mathematics Mentor", e: "14 yrs · CBSE & State Board" },
-  { n: "Mr. Karthik S.", r: "Physics & Chemistry", e: "11 yrs · Higher Secondary" },
-  { n: "Ms. Divya M.", r: "Biology & Science", e: "9 yrs · Boards + NEET foundations" },
-  { n: "Mr. Rajesh V.", r: "English & Communication", e: "12 yrs · Language coaching" },
-  { n: "Ms. Priya L.", r: "Social Science", e: "8 yrs · Concept-first teaching" },
-  { n: "Mrs. Hema P.", r: "Primary & Middle School", e: "10 yrs · Foundational learning" },
+  { n: "Mrs. Anitha R.", r: "Lead Mathematics Mentor", e: "14 years · CBSE & State Board" },
+  { n: "Mr. Karthik S.", r: "Physics & Chemistry", e: "11 years · Higher Secondary" },
+  { n: "Ms. Divya M.", r: "Biology & Science", e: "9 years · Boards + NEET foundations" },
+  { n: "Mr. Rajesh V.", r: "English & Communication", e: "12 years · Language coaching" },
+  { n: "Ms. Priya L.", r: "Social Science", e: "8 years · Concept-first teaching" },
+  { n: "Mrs. Hema P.", r: "Primary & Middle School", e: "10 years · Foundational learning" },
 ];
 
 function Faculty() {
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
-      <div className="max-w-3xl">
-        <div className="text-xs uppercase tracking-[0.2em] text-highlight">Faculty</div>
-        <h1 className="mt-3 font-display text-5xl font-semibold">Mentors who shape <span className="text-gradient">careers</span>.</h1>
-        <p className="mt-4 text-muted-foreground">
-          A team of experienced educators who teach with depth, patience and a relentless focus on student outcomes.
-        </p>
-      </div>
+    <div>
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-[1400px] px-6 pb-12 pt-10">
+          <div className="label">§ 04 — Faculty</div>
+          <h1 className="display-xl mt-6">Mentors who <span className="italic-serif text-accent">stay</span>.</h1>
+          <p className="mt-6 max-w-xl text-base text-muted-foreground">
+            Our faculty teach the same students across years. Continuity is part of the curriculum.
+          </p>
+        </div>
+      </section>
 
-      <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {team.map((t) => (
-          <div key={t.n} className="card-tilt glass rounded-2xl p-6" data-cursor="hover">
-            <div className="flex items-center gap-4">
-              <div className="grid h-14 w-14 place-items-center rounded-2xl bg-[image:var(--gradient-primary)] shadow-[var(--shadow-glow)]">
-                <GraduationCap className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <div className="font-display text-lg font-semibold">{t.n}</div>
-                <div className="text-sm text-highlight">{t.r}</div>
-              </div>
+      <section className="mx-auto max-w-[1400px] px-6 py-20">
+        <div className="rule" />
+        {team.map((t, i) => (
+          <div
+            key={t.n}
+            data-cursor="hover"
+            className="group grid grid-cols-[60px_1fr_auto] items-baseline gap-6 border-b border-border py-10 transition-colors hover:bg-paper-2/40"
+          >
+            <span className="number-marker">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <div className="font-display text-3xl group-hover:text-accent md:text-4xl">{t.n}</div>
+              <div className="mt-2 italic-serif text-base text-foreground/80">{t.r}</div>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">{t.e}</p>
+            <div className="text-right">
+              <div className="label">Tenure</div>
+              <div className="mt-1 font-mono text-xs">{t.e}</div>
+            </div>
           </div>
         ))}
-      </div>
+      </section>
     </div>
   );
 }
